@@ -3,6 +3,9 @@
 @section('content')
 
 <div class="container">
+    <button type="submit" class="btn btn-primary mb-3">Meal</button>
+    <button type="submit" class="btn btn-primary mb-3">Account</button>
+    <button type="submit" class="btn btn-primary mb-3">Bazar</button>
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -43,20 +46,105 @@
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
           </tr>
           <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
           </tr>
           <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1.5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>1</td>
           </tr>
         </tbody>
       </table>
