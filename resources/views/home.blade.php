@@ -3,9 +3,9 @@
 @section('content')
 
 <div class="container">
-    <button type="submit" class="btn btn-primary mb-3">Meal</button>
-    <button type="submit" class="btn btn-primary mb-3">Account</button>
-    <button type="submit" class="btn btn-primary mb-3">Bazar</button>
+    <a href="{{ route('meal.index')}}" class="btn btn-primary mb-3">Meal</a>
+    <a href="{{ route('account.index')}}" class="btn btn-primary mb-3">Account</a>
+    <a href="{{ route('bazar.index')}}" class="btn btn-primary mb-3">Bazar</a>
       <table class="table table-bordered">
         <thead>
           <tr>

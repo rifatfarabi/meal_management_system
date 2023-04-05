@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('total');
+            $table->string('meal_num');
+            $table->date('date');
             $table->timestamps();
         });
     }

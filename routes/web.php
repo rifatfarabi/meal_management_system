@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\BazarController;
+use App\Http\Controllers\MealController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('meal', MealController::class);
+Route::resource('account', AccountController::class);
+Route::resource('bazar', BazarController::class);
