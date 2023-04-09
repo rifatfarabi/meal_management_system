@@ -11,7 +11,7 @@ class MealController extends Controller
 
     public function index()
     {
-        $meals = Meal::paginate();
+        $meals = Meal::paginate(5);
         return view('meal.index', compact('meals'));
     }
 
@@ -64,7 +64,7 @@ class MealController extends Controller
 
     public function destroy($id)
     {
-    
+
         $meal =Meal::find($id);
         $meal->delete();
         return redirect()->route('meal.index')->with("success", "Deleted SUccessfully");

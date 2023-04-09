@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -7,18 +8,18 @@
     <div class="text-left mt-2 mb-3">
         <div class="row align-items-center">
             <div class="col-md-6">
-                <h1 class="h3">{{ ('All Member')}}</h1>
+                <h1 class="h3">{{ ('All Member Account')}}</h1>
             </div>
             <div class="col-md-6 ">
-                <a href="{{ route('meal.create') }}" class="btn btn-circle btn-info">
-                    <span>{{ ('Add New Member') }}</span>
+                <a href="{{ route('account.create') }}" class="btn btn-circle btn-info">
+                    <span>{{ ('Add New Member Account') }}</span>
                 </a>
             </div>
         </div>
     </div>
     <div class="card">
         <div class="card-header">
-            <h5>Meals</h5>
+            <h5>Account</h5>
         </div>
         <div class="card-body">
             <table class="table aiz-table mb-0">
@@ -26,24 +27,26 @@
                     <tr>
                         <th width="10%">#</th>
                         <th>{{ ('User ID') }}</th>
-                        <th>{{ ('Number of Meal') }}</th>
-                        <th>{{ ('date') }}</th>
+                        <th>{{ ('Paid') }}</th>
+                        <th>{{ ('Payable') }}</th>
+                        <th>{{ ('Meal Cost') }}</th>
                         <th>{{ ('Options') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($meals as $key => $meal)
+                    @foreach($accounts as $key => $account)
                         <tr>
-                            <td>{{ ($key+1) + ($meals->currentPage() - 1)*$meals->perPage() }}</td>
-                            <td>{{$meal->user_id}}</td>
-                            <td>{{$meal->meal_num}}</td>
-                            <td>{{$meal->date}}</td>
+                            <td>{{ ($key+1) + ($accounts->currentPage() - 1)*$accounts->perPage() }}</td>
+                            <td>{{$account->user_id}}</td>
+                            <td>{{$account->paid}}</td>
+                            <td>{{$account->payable}}</td>
+                            <td>{{$account->meal_cost}}</td>
 
-                             <td class="text-right d-flex">
-                                <a class="btn btn-primary mx-2" href="{{route('meal.edit', $meal->id)}}" title="{{ ('Edit') }}">
-                                    Edit</i>
+                            <td class="text-right d-flex">
+                                <a class="btn btn-primary mx-2" href="{{route('account.edit', $account->id)}}" title="{{ ('Edit') }}">
+                                    Edit
                                 </a>
-                             <form action="{{route('meal.destroy', $meal->id)}}" method="POST">
+                             <form action="{{route('account.destroy', $account->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -54,9 +57,12 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $meals->links()}}
+
+            {{ $accounts->links()}}
         </div>
     </div>
 </div>
 
 @endsection
+
+

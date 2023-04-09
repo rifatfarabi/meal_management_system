@@ -18,7 +18,9 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->date('date');
             $table->text('description');
-            $table->double('amount');
+            $table->double('
+
+            ');
             $table->timestamps();
         });
     }

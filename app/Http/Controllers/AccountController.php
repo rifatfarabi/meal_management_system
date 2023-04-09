@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -9,19 +11,28 @@ class AccountController extends Controller
 
     public function index()
     {
-        return view('account.index');
+        $accounts = Account::paginate(5);
+        return view('account.index', compact('accounts'));
     }
 
 
     public function create()
     {
-        //
+        $users = User::all();
+        return view('account.create',compact('users'));
     }
 
 
     public function store(Request $request)
     {
-        //
+        $account = Account::create([
+            "user_id" => $request->user()->id,
+            "paid" => $request->paid,
+            "payable" => $request->payable,
+            "meal_cost" => $request->meal_cost
+        ]);
+
+        return redirect()->route('account.index')->with("success", "Meal Created SUccessfully");
     }
 
 
@@ -32,13 +43,22 @@ class AccountController extends Controller
 
     public function edit($id)
     {
-        //
+        $users = User::all();
+        $account = Account::find($id);
+        return view('account.edit', compact('account','users'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Account $account)
     {
-        //
+        $account->update([
+            "user_id" => $request->user()->id,
+            "paid" => $request->paid,
+            "payable" => $request->payable,
+            "meal_cost" => $request->meal_cost
+        ]);
+
+        return redirect()->route('account.index')->with("success", "Meal Updated SUccessfully");
     }
 
 
