@@ -4,12 +4,11 @@
 
 
 <div class="container">
-    <div class="text-left mt-2 mb-3">
-        <div class="row align-items-center">
-            <div class="col-md-6">
+    <div class="mt-2 mb-3">
+        <div class="row ">
+            <div class="d-flex justify-content-between">
                 <h1 class="h3">{{ ('All Member')}}</h1>
-            </div>
-            <div class="col-md-6 ">
+
                 <a href="{{ route('meal.create') }}" class="btn btn-circle btn-info">
                     <span>{{ ('Add New Member') }}</span>
                 </a>

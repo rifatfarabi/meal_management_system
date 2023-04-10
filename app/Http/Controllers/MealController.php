@@ -32,7 +32,7 @@ class MealController extends Controller
             "date" => $request->date
         ]);
 
-        return redirect()->route('meal.index')->with("success", "Meal Created SUccessfully");
+        return redirect()->route('meal.index')->with("success", "Meal Created Successfully");
     }
 
 

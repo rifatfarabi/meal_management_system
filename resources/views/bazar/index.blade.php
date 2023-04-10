@@ -5,14 +5,12 @@
 
 
 <div class="container">
-    <div class="text-left mt-2 mb-3">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <h1 class="h3">{{ ('All Member')}}</h1>
-            </div>
-            <div class="col-md-6 ">
-                <a href="{{ route('meal.create') }}" class="btn btn-circle btn-info">
-                    <span>{{ ('Add New Member') }}</span>
+    <div class="mt-2 mb-3">
+        <div class="row">
+            <div class="d-flex justify-content-between">
+                <h1 class="h3">{{ ('All Bazar List')}}</h1>
+                <a href="{{ route('bazar.create') }}" class="btn btn-circle btn-info">
+                    <span>{{ ('Add New Bazar') }}</span>
                 </a>
             </div>
         </div>
@@ -27,30 +25,29 @@
                     <tr>
                         <th width="10%">#</th>
                         <th>{{ ('User ID') }}</th>
-                        <th>{{ ('Number of Meal') }}</th>
                         <th>{{ ('date') }}</th>
+                        <th>{{ ('description') }}</th>
+                        <th>{{ ('amount') }}</th>
                         <th>{{ ('Options') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($meals as $key => $meal)
+                    @foreach($bazars as $key => $bazar)
                         <tr>
-                            <td>{{ ($key+1) + ($meals->currentPage() - 1)*$meals->perPage() }}</td>
-                            <td>{{$meal->user_id}}</td>
-                            <td>{{$meal->meal_num}}</td>
-                            <td>{{$meal->date}}</td>
+                            <td>{{ ($key+1) + ($bazars->currentPage() - 1)*$bazars->perPage() }}</td>
+                            <td>{{$bazar->user_id}}</td>
+                            <td>{{$bazar->date}}</td>
+                            <td>{{$bazar->description}}</td>
+                            <td>{{$bazar->amount}}</td>
 
-                             <td class="text-right">
-                                <a class="btn btn-soft-primary btn-icon btn-circle btn-sm" href="{{route('meal.edit', $meal->id)}}" title="{{ ('Edit') }}">
-                                    <i class="las la-edit"></i>
+                             <td class="text-right d-flex">
+                                <a class="btn btn-primary mx-2" href="{{route('bazar.edit', $bazar->id)}}" title="{{ ('Edit') }}">
+                                    Edit
                                 </a>
-                             <form action="{{route('meal.destroy', $meal->id)}}" method="POST">
+                             <form action="{{route('bazar.destroy', $bazar->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-primary">Delete</button>
-                                {{-- <a href="{{route('meal.destroy', $meal->id)}}" class="btn btn-soft-danger btn-icon btn-circle btn-sm confirm-delete" title="{{ ('Delete') }}">
-                                    <i class="las la-trash"></i>
-                                </a> --}}
+                                <button type="submit" class="btn btn-danger">Delete</button>
                              </form>
                             </td>
 
