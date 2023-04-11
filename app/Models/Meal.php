@@ -14,4 +14,8 @@ class Meal extends Model
         "meal_num",
         "date"
     ];
+
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
 }

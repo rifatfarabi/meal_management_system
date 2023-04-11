@@ -35,7 +35,7 @@
                     @foreach($bazars as $key => $bazar)
                         <tr>
                             <td>{{ ($key+1) + ($bazars->currentPage() - 1)*$bazars->perPage() }}</td>
-                            <td>{{$bazar->user_id}}</td>
+                            <td>{{$bazar->user->name}}</td>
                             <td>{{$bazar->date}}</td>
                             <td>{{$bazar->description}}</td>
                             <td>{{$bazar->amount}}</td>

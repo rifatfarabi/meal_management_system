@@ -15,4 +15,9 @@ class Bazar extends Model
         "description",
         "amount"
     ];
+
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
+
 }

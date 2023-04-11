@@ -8,7 +8,7 @@
     <div class="text-left mt-2 mb-3" >
         <div class="row">
             <div class="d-flex justify-content-between">
-                
+
                 <h1 class="h3">{{ ('All Member Account')}}</h1>
 
                 <a href="{{ route('account.create') }}" class="btn btn-circle btn-info">
@@ -37,7 +37,7 @@
                     @foreach($accounts as $key => $account)
                         <tr>
                             <td>{{ ($key+1) + ($accounts->currentPage() - 1)*$accounts->perPage() }}</td>
-                            <td>{{$account->user_id}}</td>
+                            <td>{{$account->user->name}}</td>
                             <td>{{$account->paid}}</td>
                             <td>{{$account->payable}}</td>
                             <td>{{$account->meal_cost}}</td>

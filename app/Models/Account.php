@@ -15,4 +15,8 @@ class Account extends Model
         "payable",
         "meal_cost"
     ];
+
+    public function user(){
+        return $this->belongsTo(user::class);
+    }
 }

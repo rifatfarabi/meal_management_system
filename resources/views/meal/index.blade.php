@@ -34,7 +34,7 @@
                     @foreach($meals as $key => $meal)
                         <tr>
                             <td>{{ ($key+1) + ($meals->currentPage() - 1)*$meals->perPage() }}</td>
-                            <td>{{$meal->user_id}}</td>
+                            <td>{{$meal->user->name}}</td>
                             <td>{{$meal->meal_num}}</td>
                             <td>{{$meal->date}}</td>
 
