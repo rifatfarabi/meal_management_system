@@ -16,9 +16,53 @@
         </div>
     </div>
     <div class="card">
-        <div class="card-header">
-            <h5>Meals</h5>
+     <form action="" id="sort_search" method="GET">
+        <div class="card-header row">
+            <div class="col-md-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>select user</option>
+
+                    @foreach ($users as $user)
+                     <option value="{{$user->id}}">{{$user->name}}</option>
+                    @endforeach
+
+                </select>
+                {{-- <select class="form-select" name="user_name" id="user_name" aria-label="Default select example">
+                    <option selected>Select User</option>
+                    <option value="admin">Admin</option>
+                    <option value="salim">Salim</option>
+                    <option value="shajib">Shajib</option>
+                    <option value="nishat">Nishat</option>
+                    <option value="shanto">Shanto</option>
+                  </select> --}}
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group mb-0">
+                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="{{ 'start date'}}" value="{{ $start_date}}" date-format="DD-MM-Y">
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group mb-0">
+                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="{{ 'end date'}}" value="{{ $end_date}}" date-format="DD-MM-Y">
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group mb-0">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="{{ 'Query' }}" value="" date-format="DD-MM-Y">
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn btn-warning">{{'Filter'}}</button>
+                </div>
+            </div>
+
         </div>
+     </form>
         <div class="card-body">
             <table class="table aiz-table mb-0">
                 <thead>

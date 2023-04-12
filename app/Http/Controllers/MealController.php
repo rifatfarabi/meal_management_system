@@ -9,10 +9,46 @@ use Illuminate\Http\Request;
 class MealController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $meals = Meal::paginate(5);
-        return view('meal.index', compact('meals'));
+        // dd($request->all());
+
+        $sort_search = null;
+        $user_name = null;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
+
+        $users = User::all();
+        $meals = Meal::orderby('id', 'desc');  //select  * from  meals orderBy id
+
+
+        if($request->has('search')){
+            $sort_search = $request->search;
+            $meals = $meals->where(function($p) use($sort_search){
+
+                $p->where('user_id','like', '%' .$sort_search . '%')
+                ->orWhereHas('user', function($q) use ($sort_search){
+                    $q->where("date", "like", "%$sort_search%");
+                });
+            });
+        }
+
+        if($request->$user_name != null){
+            $meals = $meals->where('user_id', $request->user_name); // select  * from  meals  where user_id = $request->user_name orderBy id desc;
+            $user_name = $request->user_name;
+        }
+
+        if($start_date != null){
+            $meals = $meals->whereDate('date', '>=', date('Y-m-d', strtotime($start_date)));  //select  * from  meals whereDate date >= $request->start_date orderBy id desc;
+        }
+        if($end_date != null){
+            $meals = $meals->whereDate('date', '>=', date('Y-m-d', strtotime($end_date))); //select  * from  meals whereDate date >= $request->start_date orderBy id desc;
+        }
+
+       $meals = $meals->paginate(5);
+
+        return view('meal.index', compact('meals', 'users','user_name','start_date','end_date'));
     }
 
 
