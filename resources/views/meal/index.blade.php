@@ -9,9 +9,16 @@
             <div class="d-flex justify-content-between">
                 <h1 class="h3">{{ ('All Member')}}</h1>
 
-                <a href="{{ route('meal.create') }}" class="btn btn-circle btn-info">
-                    <span>{{ ('Add New Member') }}</span>
-                </a>
+                <div>
+                    <a href="{{ route('home') }}" class="btn btn-success mx-3">
+                        <span>{{ ('Back to Home') }}</span>
+                    </a>
+                    <a href="{{ route('meal.create') }}" class="btn btn-circle btn-info">
+                        <span>{{ ('Add New Member') }}</span>
+                    </a>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -49,11 +56,11 @@
                 </div>
             </div>
 
-            <div class="col-md-2">
+            {{-- <div class="col-md-2">
                 <div class="form-group mb-0">
                     <input type="text" class="form-control" id="search" name="search" placeholder="{{ 'Query' }}" value="" date-format="DD-MM-Y">
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-md-2">
                 <div class="form-group mb-0">

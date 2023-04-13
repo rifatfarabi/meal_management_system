@@ -23,16 +23,16 @@ class MealController extends Controller
         $meals = Meal::orderby('id', 'desc');  //select  * from  meals orderBy id
 
 
-        if($request->has('search')){
-            $sort_search = $request->search;
-            $meals = $meals->where(function($p) use($sort_search){
+        // if($request->has('search')){
+        //     $sort_search = $request->search;
+        //     $meals = $meals->where(function($p) use($sort_search){
 
-                $p->where('user_id','like', '%' .$sort_search . '%')
-                ->orWhereHas('user', function($q) use ($sort_search){
-                    $q->where("date", "like", "%$sort_search%");
-                });
-            });
-        }
+        //         $p->where('user_id','like', '%' .$sort_search . '%')
+        //         ->orWhereHas('user', function($q) use ($sort_search){
+        //             $q->where("date", "like", "%$sort_search%");
+        //         });
+        //     });
+        // }
 
         if($request->$user_name != null){
             $meals = $meals->where('user_id', $request->user_name); // select  * from  meals  where user_id = $request->user_name orderBy id desc;
@@ -43,7 +43,7 @@ class MealController extends Controller
             $meals = $meals->whereDate('date', '>=', date('Y-m-d', strtotime($start_date)));  //select  * from  meals whereDate date >= $request->start_date orderBy id desc;
         }
         if($end_date != null){
-            $meals = $meals->whereDate('date', '>=', date('Y-m-d', strtotime($end_date))); //select  * from  meals whereDate date >= $request->start_date orderBy id desc;
+            $meals = $meals->whereDate('date', '<=', date('Y-m-d', strtotime($end_date))); //select  * from  meals whereDate date >= $request->start_date orderBy id desc;
         }
 
        $meals = $meals->paginate(5);

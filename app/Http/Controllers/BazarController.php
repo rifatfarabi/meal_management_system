@@ -10,10 +10,13 @@ use Illuminate\Http\Request;
 class BazarController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $bazars = Bazar::paginate(5);
-        return view('bazar.index',compact('bazars'));
+        $sort_search = null;
+        
+        $users = User::all();
+
+        return view('bazar.index',compact('bazars','users'));
     }
 
 

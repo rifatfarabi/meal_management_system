@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $users = User::all();
         $accounts = Account::paginate(5);
-        return view('account.index', compact('accounts'));
+        return view('account.index', compact('accounts','users'));
     }
 
 
