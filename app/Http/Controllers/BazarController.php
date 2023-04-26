@@ -13,8 +13,27 @@ class BazarController extends Controller
     public function index(Request $request)
     {
         $sort_search = null;
-        
+        $user_name = null;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
         $users = User::all();
+        $bazars = Bazar::orderBy('id','desc');
+
+        if($request->user_name != null){
+            $bazars = $bazars->where('user_id', $request->user_name);
+            $user_name = $request->user_name;
+        }
+
+        if($start_date != null){
+            $bazars = $bazars->wheredate('date', '>=', date('Y-m-d', strtotime($start_date)));
+        }
+
+        if($end_date != null){
+            $bazars = $bazars->wheredate('date', '<=', date('Y-m-d', strtotime($end_date)));
+        }
+
+        $bazars = $bazars->paginate(5);
 
         return view('bazar.index',compact('bazars','users'));
     }
@@ -29,8 +48,10 @@ class BazarController extends Controller
 
     public function store(Request $request)
     {
+
+        
         $bazar = Bazar::create([
-            "user_id" => $request->user()->id,
+            "user_id" => $request->user_name,
             "date" => $request->date,
             "description" => $request->description,
             "amount" => $request->amount,

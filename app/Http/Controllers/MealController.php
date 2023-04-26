@@ -20,7 +20,7 @@ class MealController extends Controller
 
 
         $users = User::all();
-        $meals = Meal::orderby('id', 'desc');  //select  * from  meals orderBy id
+        $meals = Meal::orderBy('id', 'desc');  //select  * from  meals orderBy id
 
 
         // if($request->has('search')){
