@@ -8,10 +8,11 @@
     <a href="{{ route('bazar.index')}}" class="btn btn-primary mb-3">Bazar</a>
 
     <div class="card">
-        {{-- <form action="" id="sort_search" method="GET">
+        <form action="" id="sort_search" method="GET">
            <div class="card-header row">
-               <div class="col-md-2">
+               {{-- <div class="col-md-2">
                    <select class="form-select" aria-label="Default select example">
+
                        <option selected>select user</option>
 
                        @foreach ($users as $user)
@@ -19,28 +20,10 @@
                        @endforeach
 
                    </select>
-               </div>
-
-               <div class="col-md-2">
-                   <div class="form-group mb-0">
-                       <input type="date" class="form-control" id="start_date" name="start_date" placeholder="{{ 'start date'}}" value="{{ $start_date}}" date-format="DD-MM-Y">
-                   </div>
-               </div>
-
-               <div class="col-md-2">
-                   <div class="form-group mb-0">
-                       <input type="date" class="form-control" id="end_date" name="end_date" placeholder="{{ 'end date'}}" value="{{ $end_date}}" date-format="DD-MM-Y">
-                   </div>
-               </div>
-
-               <div class="col-md-2">
-                   <div class="form-group mb-0">
-                       <button type="submit" class="btn btn-warning">{{'Filter'}}</button>
-                   </div>
-               </div>
+               </div> --}}
 
            </div>
-        </form> --}}
+        </form>
            <div class="card-body">
                <table class="table aiz-table mb-0">
                    <thead>
@@ -70,8 +53,7 @@
                                    <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                                </td>
-
-                           </tr>
+                            </tr>
                        @endforeach
                    </tbody>
                </table>
@@ -80,25 +62,4 @@
        </div>
 </div>
 
-
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 @endsection

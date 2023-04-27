@@ -25,16 +25,30 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        $user_name = null;
+
         $users = User::all();
-        $meals = Meal::all()->groupBy('user_id');
+        $meals = Meal::orderBy('id', 'desc');//select  * from  meals orderBy id
+        $accounts = Account::paginate(5);
+        $bazars = Bazar::orderBy('id','desc');
 
 
-        // $meals = $meals->paginate(5);
 
 
+        // if($request->$user_name != null){
+        //     $meals = $meals->where('user_id', $request->user_name); // select  * from  meals  where user_id = $request->user_name orderBy id desc;
+        //     $user_name = $request->user_name;
+        // }
 
-        return view('home', compact('meals','users'));
+       $meals = $meals->paginate(5);
+       $bazars = $bazars->paginate(5);
+
+        return view('home', compact('meals', 'users','user_name','accounts','bazars'));
+
+        // $users = User::all();
+        // $meals = Meal::all()->groupBy('user_id');
+        // return view('home', compact('meals','users'));
     }
 }
