@@ -3,9 +3,12 @@
 @section('content')
 
 <div class="container">
-    <button type="submit" class="btn btn-primary mb-3">Meal</button>
+    <a href="/meal" class="btn btn-primary mb-3" role="button">Meal</a>
+    <a href="/meal" class="btn btn-primary mb-3" role="button">Acoount</a>
+    <a href="/meal" class="btn btn-primary mb-3" role="button">Bazar</a>
+    {{-- <button type="submit" class="btn btn-primary mb-3">Meal</button>
     <button type="submit" class="btn btn-primary mb-3">Account</button>
-    <button type="submit" class="btn btn-primary mb-3">Bazar</button>
+    <button type="submit" class="btn btn-primary mb-3">Bazar</button> --}}
       <table class="table table-bordered">
         <thead>
           <tr>
