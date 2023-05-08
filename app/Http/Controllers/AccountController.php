@@ -27,7 +27,7 @@ class AccountController extends Controller
     public function store(Request $request)
     {
         $account = Account::create([
-            "user_id" => $request->user()->id,
+            "user_id" => $request->s_user,
             "paid" => $request->paid,
             "payable" => $request->payable,
             "meal_cost" => $request->meal_cost

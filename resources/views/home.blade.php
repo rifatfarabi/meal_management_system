@@ -25,7 +25,52 @@
            </div>
         </form>
            <div class="card-body">
-               <table class="table aiz-table mb-0">
+
+            <table class="table">
+                <thead>
+                  <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Paid</th>
+                        <th scope="col">Payable</th>
+                        <th scope="col">T.Meal</th>
+                        <th scope="col">M.Cost</th>
+                        @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
+                        <th scope="col">{{$i}}</th>
+                        @endfor
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($users as $key => $user)
+                        <tr>
+                            <th scope="row">{{$key+1}}</th>
+                            <td>{{ $user->name }}</td>
+                            @php
+                                $paid = $user->accounts()->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("paid");
+                            @endphp
+                            <td>{{$paid}}</td>
+                            <td>@mdo</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
+                                @php
+                                    $todaymeal = $user->meals()->whereMonth("created_at", \Carbon\Carbon::now()->month)->whereDate('created_at', \Carbon\Carbon::today())->sum("meal_num");
+                                @endphp
+                                    <td scope="col">{{ $todaymeal }}</td>
+                           @endfor
+
+
+                        </tr>
+                    @endforeach
+
+                </tbody>
+              </table>
+
+
+
+
+
+               {{-- <table class="table aiz-table mb-0">
                    <thead>
                        <tr>
                            <th width="10%">#</th>
@@ -57,8 +102,9 @@
                        @endforeach
                    </tbody>
                </table>
-               {{ $meals->links()}}
+               {{ $meals->links()}} --}}
            </div>
+
        </div>
 </div>
 

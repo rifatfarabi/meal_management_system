@@ -63,7 +63,7 @@ class MealController extends Controller
     {
 
         $meal = Meal::create([
-            "user_id" => $request->user()->id,
+            "user_id" => $request->s_user,
             "meal_num" => $request->meal_num,
             "date" => $request->date
         ]);

@@ -8,7 +8,7 @@
             <form action="{{route('meal.store')}}" method="POST">
                 @csrf
 
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" name="s_user" aria-label="Default select example">
                     <option selected>select user</option>
 
                     @foreach ($users as $user)

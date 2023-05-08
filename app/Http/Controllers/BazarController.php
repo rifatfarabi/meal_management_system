@@ -49,9 +49,9 @@ class BazarController extends Controller
     public function store(Request $request)
     {
 
-        
+
         $bazar = Bazar::create([
-            "user_id" => $request->user_name,
+            "user_id" => $request->s_user,
             "date" => $request->date,
             "description" => $request->description,
             "amount" => $request->amount,

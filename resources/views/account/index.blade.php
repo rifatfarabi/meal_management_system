@@ -27,7 +27,7 @@
         <form action="" id="sort_search" method="GET">
             <div class="card-header row">
                 <div class="col-md-2">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="s_user" aria-label="Default select example">
                         <option selected>select user</option>
 
                         @foreach ($users as $user)

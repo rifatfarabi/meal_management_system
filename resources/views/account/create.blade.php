@@ -8,7 +8,7 @@
             <form action="{{route('account.store')}}" method="POST">
                 @csrf
 
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" name="s_user" aria-label="Default select example">
                     <option selected>select user</option>
 
                     @foreach ($users as $user)
@@ -29,7 +29,7 @@
                   <label for="meal_cost" class="form-label">Meal Cost</label>
                   <input type="text" class="form-control" id="meal_cost" name="meal_cost">
                 </div>
-        
+
 
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
