@@ -38,6 +38,7 @@
                         @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
                         <th scope="col">{{$i}}</th>
                         @endfor
+
                     </tr>
                 </thead>
                 <tbody>
@@ -54,11 +55,13 @@
                             <td>@mdo</td>
                             @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
                                 @php
-                                    $todaymeal = $user->meals()->whereMonth("created_at", \Carbon\Carbon::now()->month)->whereDate('created_at', \Carbon\Carbon::today())->sum("meal_num");
+                                    $month =\Carbon\Carbon::now()->month;
+                                    $date = \Carbon\Carbon::createFromDate(null, $month, $i);
+
+                                    $todaymeal = $user->meals()->whereMonth("date", $month)->whereDate('date', $date)->sum("meal_num");
                                 @endphp
                                     <td scope="col">{{ $todaymeal }}</td>
                            @endfor
-
 
                         </tr>
                     @endforeach
