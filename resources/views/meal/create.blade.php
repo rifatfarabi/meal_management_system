@@ -26,6 +26,11 @@
                   <input type="date" class="form-control" id="date" name="date">
                 </div>
 
+                <div class="my-3 d-flex">
+                    <label for="meal_num" class="form-label me-3">User Name</label>
+                    <input type="text" class="form-control" id="meal_num" name="meal_num">
+                  </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
         </div>
