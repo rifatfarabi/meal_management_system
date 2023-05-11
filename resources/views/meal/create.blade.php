@@ -8,28 +8,30 @@
             <form action="{{route('meal.store')}}" method="POST">
                 @csrf
 
-                <select class="form-select" name="s_user" aria-label="Default select example">
+                {{-- <select class="form-select" name="s_user" aria-label="Default select example">
                     <option selected>select user</option>
 
                     @foreach ($users as $user)
                      <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
 
-                </select>
+                </select> --}}
 
-                <div class="my-3">
+                {{-- <div class="my-3">
                   <label for="meal_num" class="form-label">Number of Meal</label>
                   <input type="text" class="form-control" id="meal_num" name="meal_num">
-                </div>
+                </div> --}}
                 <div class="my-3">
                   <label for="date" class="form-label">Date</label>
                   <input type="date" class="form-control" id="date" name="date">
                 </div>
 
-                <div class="my-3 d-flex">
-                    <label for="meal_num" class="form-label me-3">User Name</label>
-                    <input type="text" class="form-control" id="meal_num" name="meal_num">
+                @foreach ($users as $user)
+                  <div class="my-3 d-flex">
+                    <label for="meal_num" class="form-label me-3">{{$user->name}}</label>
+                    <input type="text" class="form-control"  name="name[{{$user->id}}]" id="meal_num" placeholder="Enter meal number">
                   </div>
+                @endforeach
 
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>

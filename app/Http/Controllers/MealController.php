@@ -62,11 +62,15 @@ class MealController extends Controller
     public function store(Request $request)
     {
 
-        $meal = Meal::create([
-            "user_id" => $request->s_user,
-            "meal_num" => $request->meal_num,
-            "date" => $request->date
-        ]);
+        $username = $request->name;
+        foreach($username as $user_id => $mealammount){
+            $meal = Meal::create([
+                "user_id" => $user_id,
+                "meal_num" => $mealammount,
+                "date" => $request->date,
+            ]);
+        }
+
 
         return redirect()->route('meal.index')->with("success", "Meal Created Successfully");
     }
