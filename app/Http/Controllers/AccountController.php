@@ -11,8 +11,32 @@ class AccountController extends Controller
 
     public function index(Request $request)
     {
+        // $users = User::all();
+        // $accounts = Account::paginate(5);
+
+        $sort_search = null;
+        $user_name = null;
+        $start_date = $request->start_date;
+        $end_date = $request->end_date;
+
         $users = User::all();
-        $accounts = Account::paginate(5);
+        $accounts = Account::orderBy('id','desc');
+
+        if($request->user_name != null){
+            $accounts = $accounts->where('user_id', $request->user_name);
+            $user_name = $request->user_name;
+        }
+
+        if($start_date != null){
+            $accounts = $accounts->wheredate('date', '>=', date('Y-m-d', strtotime($start_date)));
+        }
+
+        if($end_date != null){
+            $accounts = $accounts->wheredate('date', '<=', date('Y-m-d', strtotime($end_date)));
+        }
+
+        $accounts = $accounts->paginate(5);
+
         return view('account.index', compact('accounts','users'));
     }
 
@@ -29,8 +53,9 @@ class AccountController extends Controller
         $account = Account::create([
             "user_id" => $request->s_user,
             "paid" => $request->paid,
-            "payable" => $request->payable,
-            "meal_cost" => $request->meal_cost
+            "date" => $request->date
+            // "payable" => $request->payable,
+            // "meal_cost" => $request->meal_cost
         ]);
 
         return redirect()->route('account.index')->with("success", "Meal Created SUccessfully");
@@ -55,8 +80,9 @@ class AccountController extends Controller
         $account->update([
             "user_id" => $request->user()->id,
             "paid" => $request->paid,
-            "payable" => $request->payable,
-            "meal_cost" => $request->meal_cost
+            "date" => $request->date
+            // "payable" => $request->payable,
+            // "meal_cost" => $request->meal_cost
         ]);
 
         return redirect()->route('account.index')->with("success", "Meal Updated SUccessfully");
@@ -65,6 +91,8 @@ class AccountController extends Controller
 
     public function destroy($id)
     {
-        //
+        $account = Account::find($id);
+        $account->delete();
+        return redirect()->route('account.index')->with("success", "Deleted SUccessfully");
     }
 }

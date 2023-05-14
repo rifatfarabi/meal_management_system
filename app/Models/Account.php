@@ -12,8 +12,9 @@ class Account extends Model
     protected $fillable = [
         "user_id",
         "paid",
-        "payable",
-        "meal_cost"
+        "date"
+        // "payable",
+        // "meal_cost"
     ];
 
     public function user(){

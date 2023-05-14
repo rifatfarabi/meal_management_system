@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->date('date');
             $table->double('paid');
-            $table->double('payable');
-            $table->double('meal_cost');
             $table->timestamps();
         });
     }

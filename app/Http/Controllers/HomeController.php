@@ -31,24 +31,14 @@ class HomeController extends Controller
 
         $users = User::all();
         $meals = Meal::orderBy('id', 'desc');//select  * from  meals orderBy id
-        $accounts = Account::paginate(5);
+        $accounts = Account::orderBy('id', 'desc');
         $bazars = Bazar::orderBy('id','desc');
 
 
-
-
-        // if($request->$user_name != null){
-        //     $meals = $meals->where('user_id', $request->user_name); // select  * from  meals  where user_id = $request->user_name orderBy id desc;
-        //     $user_name = $request->user_name;
-        // }
-
        $meals = $meals->paginate(5);
        $bazars = $bazars->paginate(5);
+       $accounts = $accounts->paginate(5);
 
         return view('home', compact('meals', 'users','user_name','accounts','bazars'));
-
-        // $users = User::all();
-        // $meals = Meal::all()->groupBy('user_id');
-        // return view('home', compact('meals','users'));
     }
 }

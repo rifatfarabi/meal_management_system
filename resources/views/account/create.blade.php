@@ -18,16 +18,13 @@
                 </select>
 
                 <div class="my-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control" id="date" name="date">
+                </div>
+
+                <div class="my-3">
                   <label for="paid" class="form-label">Paid</label>
                   <input type="text" class="form-control" id="paid" name="paid">
-                </div>
-                <div class="my-3">
-                  <label for="payable" class="form-label">Payable</label>
-                  <input type="text" class="form-control" id="payable" name="payable">
-                </div>
-                <div class="my-3">
-                  <label for="meal_cost" class="form-label">Meal Cost</label>
-                  <input type="text" class="form-control" id="meal_cost" name="meal_cost">
                 </div>
 
 

@@ -3,9 +3,23 @@
 @section('content')
 
 <div class="container">
-    <a href="{{ route('meal.index')}}" class="btn btn-primary mb-3">Meal</a>
-    <a href="{{ route('account.index')}}" class="btn btn-primary mb-3">Account</a>
-    <a href="{{ route('bazar.index')}}" class="btn btn-primary mb-3">Bazar</a>
+
+        <a href="{{ route('meal.index')}}" class="btn btn-primary mb-3">Meal</a>
+        <a href="{{ route('account.index')}}" class="btn btn-primary mb-3">Account</a>
+        <a href="{{ route('bazar.index')}}" class="btn btn-primary mb-3">Bazar</a>
+
+        <div class="d-flex">
+            <div >
+                <label for="date" class="form-label">Total Bazar</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+            <div>
+                <label for="date" class="form-label">Meal rate</label>
+                <input type="date" class="form-control" id="date" name="date">
+            </div>
+        </div>
+
+
 
     <div class="card">
         <form action="" id="sort_search" method="GET">
@@ -51,7 +65,7 @@
                             @endphp
                             <td>{{$paid}}</td>
                             <td>@mdo</td>
-                            <td>Otto</td>
+                            <td>Total meal</td>
                             <td>@mdo</td>
                             @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
                                 @php

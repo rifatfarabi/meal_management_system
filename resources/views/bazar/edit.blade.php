@@ -19,7 +19,7 @@
 
                 <div class="my-3">
                   <label for="date" class="form-label">Date</label>
-                  <input type="date" class="form-control" id="date" name="date" value="{{ $meal->date}}">
+                  <input type="date" class="form-control" id="date" name="date" value="{{ $bazar->date}}">
                 </div>
 
                 <div class="my-3">

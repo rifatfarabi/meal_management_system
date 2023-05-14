@@ -64,9 +64,8 @@
                     <tr>
                         <th width="10%">#</th>
                         <th>{{ ('User ID') }}</th>
+                        <th>{{ ('date') }}</th>
                         <th>{{ ('Paid') }}</th>
-                        <th>{{ ('Payable') }}</th>
-                        <th>{{ ('Meal Cost') }}</th>
                         <th>{{ ('Options') }}</th>
                     </tr>
                 </thead>
@@ -75,9 +74,8 @@
                         <tr>
                             <td>{{ ($key+1) + ($accounts->currentPage() - 1)*$accounts->perPage() }}</td>
                             <td>{{$account->user->name}}</td>
+                            <td>{{$account->date}}</td>
                             <td>{{$account->paid}}</td>
-                            <td>{{$account->payable}}</td>
-                            <td>{{$account->meal_cost}}</td>
 
                             <td class="text-right d-flex">
                                 <a class="btn btn-primary mx-2" href="{{route('account.edit', $account->id)}}" title="{{ ('Edit') }}">
