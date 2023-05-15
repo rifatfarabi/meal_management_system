@@ -8,15 +8,34 @@
         <a href="{{ route('account.index')}}" class="btn btn-primary mb-3">Account</a>
         <a href="{{ route('bazar.index')}}" class="btn btn-primary mb-3">Bazar</a>
 
-        <div class="d-flex">
-            <div >
-                <label for="date" class="form-label">Total Bazar</label>
-                <input type="date" class="form-control" id="date" name="date">
-            </div>
-            <div>
-                <label for="date" class="form-label">Meal rate</label>
-                <input type="date" class="form-control" id="date" name="date">
-            </div>
+        <div class="d-flex justify-content-between">
+
+
+
+            @foreach ($bazars as $bazar)
+
+                @php
+                $amount = $bazar->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("amount");
+                @endphp
+
+            @endforeach
+            <h5>Total Bazar: {{ $amount }}</h5>
+
+            @foreach ($meals as $meal)
+                @php
+                    $total_meal = $meal->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("meal_num")
+                @endphp
+            @endforeach
+            <h5>Total Meal: {{ $total_meal }}</h5>
+
+            {{-- <h5>Meal Rate:{{ $amount / $total_meal }} </h5> --}}
+
+            @php
+                $meal_rate = ($amount / $total_meal);
+            @endphp
+
+            <h5>Meal Rate:{{ round($meal_rate, 2) }} </h5>
+
         </div>
 
 
@@ -62,11 +81,28 @@
                             <td>{{ $user->name }}</td>
                             @php
                                 $paid = $user->accounts()->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("paid");
+                                $amount = $user->bazars()->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("amount");
+                                $t_paid = $paid + $amount;
                             @endphp
-                            <td>{{$paid}}</td>
-                            <td>@mdo</td>
-                            <td>Total meal</td>
-                            <td>@mdo</td>
+                            <td>{{ $t_paid }}</td>
+
+                            @php
+                                $payable = $t_paid  - round($meal_cost, 2);
+                            @endphp
+
+                            <td>{{ $payable }}</td>
+
+                            @php
+                              $total_meal = $user->meals()->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("meal_num");
+                            @endphp
+                            <td>{{ $total_meal }}</td>
+
+                            @php
+                                $meal_cost = ($total_meal * $meal_rate);
+                            @endphp
+
+                            <td>{{ round($meal_cost, 2) }}</td>
+
                             @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
                                 @php
                                     $month =\Carbon\Carbon::now()->month;
