@@ -65,9 +65,9 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Paid</th>
-                        <th scope="col">Payable</th>
                         <th scope="col">T.Meal</th>
                         <th scope="col">M.Cost</th>
+                        <th scope="col">Payable</th>
                         @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
                         <th scope="col">{{$i}}</th>
                         @endfor
@@ -86,11 +86,7 @@
                             @endphp
                             <td>{{ $t_paid }}</td>
 
-                            @php
-                                $payable = $t_paid  - round($meal_cost, 2);
-                            @endphp
 
-                            <td>{{ $payable }}</td>
 
                             @php
                               $total_meal = $user->meals()->whereMonth("created_at", \Carbon\Carbon::now()->month)->sum("meal_num");
@@ -102,6 +98,12 @@
                             @endphp
 
                             <td>{{ round($meal_cost, 2) }}</td>
+
+                            @php
+                              $pay = ($t_paid  - $meal_cost);
+                            @endphp
+
+                            <td>{{ round($pay, 2) }}</td>
 
                             @for ($i=1; $i<= \Carbon\Carbon::now()->daysInMonth; $i++)
                                 @php
